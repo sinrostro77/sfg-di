@@ -4,7 +4,6 @@ import com.tgcs.springframework.sfgdi.controllers.ConstructorInjectedController;
 import com.tgcs.springframework.sfgdi.controllers.MyController;
 import com.tgcs.springframework.sfgdi.controllers.PropertyInjectedController;
 import com.tgcs.springframework.sfgdi.controllers.SetterInjectedController;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,9 +13,11 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+		
 		MyController myController = ctx.getBean("myController", MyController.class);
-		String greeting = myController.sayHello();
-		System.out.println(greeting);
+
+		System.out.println("------- Primary Service");
+		System.out.println(myController.sayHello());
 
 		System.out.println("------- Property");
 		PropertyInjectedController propertyInjectedController = ctx.getBean("propertyInjectedController", PropertyInjectedController.class);
